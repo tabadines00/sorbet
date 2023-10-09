@@ -7,13 +7,37 @@
     <title></title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div id="root"></div>
-	<script src="./sorbet/sorbet.js"></script>
+    <script src="./sorbet/sorbet.js"></script>
+    <script>
+    let index = 0
+
+    function inc() {
+      index++
+      console.log(index)
+    }
+
+    const item = new Div({class: "nav", id: "yes"})
+
+    let button = new Div({onClick: "inc()"}, "click me! " + index)
+    
+    const container = new Div({class: "navbar", id: "no"}, [
+      item,
+      new Div({class: "another", style: "color: green;"}, [
+        "Hello Everyone",
+        button
+      ])
+    ])
+    
+    item.addChild("hello hello!")
+
+    item.print()
+
+    append(root, container.toElement())
+
+    </script>
   </body>
 </html>
